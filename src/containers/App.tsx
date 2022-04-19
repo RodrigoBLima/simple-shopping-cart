@@ -3,7 +3,7 @@ import React from 'react';
 function App() {
   return (
     <section>
-        <h4>Shopping card</h4>
+      <h4>Shopping card</h4>
     </section>
   );
 }
