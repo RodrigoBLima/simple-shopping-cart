@@ -1,20 +1,19 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import React from 'react';
+import Header from '../../layout/Header';
 
-import api from '../../services/api';
+import ProductsList from './components/ProductsList';
 
 function LandingContainer() {
-  async function handleFetchProducts() {
-    const { data } = await api.get('/products');
-  }
-
-  React.useEffect(() => {
-    handleFetchProducts();
-  }, []);
-
   return (
-    <section id="landing-page-container">
-      <h4>Shopping card landing</h4>
-    </section>
+    <>
+      <Header />
+      <section id="landing-page-container">
+        <h4>Shopping card landing</h4>
+
+        <ProductsList />
+      </section>
+    </>
   );
 }
 
