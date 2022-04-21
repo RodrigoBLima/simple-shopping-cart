@@ -1,9 +1,20 @@
 /* eslint-disable no-unsafe-optional-chaining */
 /* eslint-disable no-plusplus */
 import React from 'react';
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+  Button,
+  CardActionArea,
+  CardActions
+} from '@mui/material';
 
-import { useCartContext } from '../../../contexts/cart/CartContextProvider';
-import { ProductItemProps } from '../../../types/products';
+import { useCartContext } from '../../../../contexts/cart/CartContextProvider';
+import { ProductItemProps } from '../../../../types/products';
+
+import './index.css';
 
 function ProductsItem(props: ProductItemProps) {
   const { products: cartProducts, setProducts: setCartProducts } =
@@ -41,16 +52,32 @@ function ProductsItem(props: ProductItemProps) {
   }
 
   return (
-    <div>
-      {' '}
-      <section>
-        <span>{productItem.title}</span>
-
-        <button type="button" onClick={() => handleAddProductOnCart()}>
+    <Card sx={{ maxWidth: 345 }} className="cart-product-item">
+      <CardActionArea>
+        <CardMedia
+          component="img"
+          height="140"
+          image={productItem.image}
+          alt="green iguana"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            {productItem.title} - R$ {productItem.price}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {productItem.description}
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+      <CardActions>
+        <Button
+          size="small"
+          color="primary"
+          onClick={() => handleAddProductOnCart()}>
           Adicionar ao carrinho
-        </button>
-      </section>
-    </div>
+        </Button>
+      </CardActions>
+    </Card>
   );
 }
 
