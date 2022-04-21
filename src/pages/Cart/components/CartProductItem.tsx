@@ -7,6 +7,7 @@ export default function CartProductItem(props: ProductItemProps) {
     <section>
       <span>{product.title}</span>
       <span>{product.price}</span>
+      <span>{product.quantity}</span>
     </section>
   );
 }

@@ -11,7 +11,11 @@ export default function ProductsItem(props: ProductItemProps) {
 
   function handleAddProductOnCart(productCart: ProductProps) {
     const copyCartProducts = cartProducts;
-    const updatedCardProducts = [...copyCartProducts, productCart];
+
+    const updatedCardProducts = [
+      ...copyCartProducts,
+      { ...productCart, quantity: 1 }
+    ];
     setCartProducts(updatedCardProducts);
   }
 

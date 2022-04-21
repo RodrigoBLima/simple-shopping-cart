@@ -8,6 +8,7 @@ export interface ProductProps {
   price: number;
   rating: { rate: number; count: number };
   title: string;
+  quantity?: number;
 }
 
 export interface ProductItemProps {
@@ -19,6 +20,7 @@ export interface ProductItemProps {
     price: number;
     rating: { rate: number; count: number };
     title: string;
+    quantity?: number;
   };
 }
 
