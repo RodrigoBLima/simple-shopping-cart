@@ -11,14 +11,21 @@ export default function CartListProductsSelecteds() {
 
   return (
     <section id="cart-list-products-container">
-      {hasProductsOnTheCart
-        ? (products || []).map((product: ProductProps, index: number) => (
-            <CartProductItem product={product} key={product.id} index={index} />
-          ))
-        : null}
+      {hasProductsOnTheCart ? (
+        (products || []).map((product: ProductProps, index: number) => (
+          <CartProductItem product={product} key={product.id} index={index} />
+        ))
+      ) : (
+        <p>Seu carrinho está vazio, vamos as compras?</p>
+      )}
 
-      <p>Total de produtos: {total}</p>
-      <p>Total à pagar: {totalPayment}</p>
+      {hasProductsOnTheCart && (
+        <>
+          {' '}
+          <p>Total de produtos: {total}</p>
+          <p>Total à pagar: {totalPayment}</p>
+        </>
+      )}
     </section>
   );
 }
