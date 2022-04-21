@@ -1,0 +1,17 @@
+.price-product-cart {
+  font-weight: 800;
+}
+
+.cart-product-item-select-quantity {
+  width: '150px';
+  padding: '0.1em';
+  border-radius: '8px';
+  display: 'flex';
+  justify-content: 'center';
+  align-items: 'center';
+  border: '1px solid #ddd';
+
+  .quantity-item {
+    margin: 5px
+  }
+}
