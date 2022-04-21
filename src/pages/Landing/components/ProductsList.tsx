@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import React from 'react';
 
+import { Grid } from '@mui/material';
 import { ProductProps } from '../../../types/products';
 
 import ProductsItem from './ProductsItem';
@@ -22,11 +23,19 @@ function ProductsList() {
 
   return (
     <section id="landing-page-products-container">
-      {hasProducts
-        ? (products || []).map((product: ProductProps, index: number) => (
-            <ProductsItem product={product} key={product.id} index={index} />
-          ))
-        : null}
+      <Grid container spacing={2}>
+        {hasProducts
+          ? (products || []).map((product: ProductProps, index: number) => (
+              <Grid item xs={4}>
+                <ProductsItem
+                  product={product}
+                  key={product.id}
+                  index={index}
+                />
+              </Grid>
+            ))
+          : null}
+      </Grid>
     </section>
   );
 }
