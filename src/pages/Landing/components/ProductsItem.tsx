@@ -1,22 +1,43 @@
+/* eslint-disable no-unsafe-optional-chaining */
+/* eslint-disable no-plusplus */
 import React from 'react';
 
 import { useCartContext } from '../../../contexts/cart/CartContextProvider';
-import { ProductItemProps, ProductProps } from '../../../types/products';
+import { ProductItemProps } from '../../../types/products';
 
-export default function ProductsItem(props: ProductItemProps) {
+function ProductsItem(props: ProductItemProps) {
   const { products: cartProducts, setProducts: setCartProducts } =
     useCartContext();
 
   const { product: productItem } = props;
+  const copyCartProducts = cartProducts;
 
-  function handleAddProductOnCart(productCart: ProductProps) {
-    const copyCartProducts = cartProducts;
+  const checkDuplicateProduct = (cartProducts || []).findIndex(
+    (cartItemProduct) => cartItemProduct.id === productItem.id
+  );
 
-    const updatedCardProducts = [
-      ...copyCartProducts,
-      { ...productCart, quantity: 1 }
-    ];
-    setCartProducts(updatedCardProducts);
+  function handleCheckAlreadyExistsProduct(index: number) {
+    const currentProduct = copyCartProducts[index];
+
+    currentProduct.quantity = currentProduct?.quantity
+      ? currentProduct?.quantity + 1
+      : 1;
+
+    copyCartProducts[index] = currentProduct;
+
+    setCartProducts(copyCartProducts);
+  }
+
+  function handleAddProductOnCart() {
+    if (checkDuplicateProduct !== -1) {
+      handleCheckAlreadyExistsProduct(checkDuplicateProduct);
+    } else {
+      const updatedCardProducts = [
+        ...copyCartProducts,
+        { ...productItem, quantity: 1 }
+      ];
+      setCartProducts(updatedCardProducts);
+    }
   }
 
   return (
@@ -25,12 +46,12 @@ export default function ProductsItem(props: ProductItemProps) {
       <section>
         <span>{productItem.title}</span>
 
-        <button
-          type="button"
-          onClick={() => handleAddProductOnCart(productItem)}>
+        <button type="button" onClick={() => handleAddProductOnCart()}>
           Adicionar ao carrinho
         </button>
       </section>
     </div>
   );
 }
+
+export default ProductsItem;

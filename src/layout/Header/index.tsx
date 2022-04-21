@@ -6,6 +6,7 @@ export default function Header() {
     <div>
       Header
       <Link to="/cart">Carrinho</Link>
+      <Link to="/">Produtos</Link>
     </div>
   );
 }

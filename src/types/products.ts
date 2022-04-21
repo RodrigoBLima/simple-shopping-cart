@@ -12,6 +12,7 @@ export interface ProductProps {
 }
 
 export interface ProductItemProps {
+  index?: number;
   product: {
     category: string;
     description: string;
