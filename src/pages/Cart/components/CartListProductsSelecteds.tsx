@@ -12,19 +12,15 @@ export default function CartListProductsSelecteds() {
   return (
     <section id="cart-list-products-container">
       {hasProductsOnTheCart ? (
-        (products || []).map((product: ProductProps, index: number) => (
-          <CartProductItem product={product} key={product.id} index={index} />
-        ))
-      ) : (
-        <p>Seu carrinho está vazio, vamos as compras?</p>
-      )}
-
-      {hasProductsOnTheCart && (
         <>
-          {' '}
+          {(products || []).map((product: ProductProps, index: number) => (
+            <CartProductItem product={product} key={product.id} index={index} />
+          ))}
           <p>Total de produtos: {total}</p>
           <p>Total à pagar: {totalPayment}</p>
         </>
+      ) : (
+        <p>Seu carrinho está vazio, vamos as compras?</p>
       )}
     </section>
   );
