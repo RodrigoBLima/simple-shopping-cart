@@ -6,11 +6,12 @@ import CartProductItem from './CartProductItem';
 export default function CartListProductsSelecteds() {
   const { products, total, handleCalculateTotalToPay } = useCartContext();
 
+  const hasProductsOnTheCart = products.length > 0;
   const totalPayment = handleCalculateTotalToPay();
 
   return (
     <section id="cart-list-products-container">
-      {products.length > 0
+      {hasProductsOnTheCart
         ? (products || []).map((product: ProductProps, index: number) => (
             <CartProductItem product={product} key={product.id} index={index} />
           ))
