@@ -29,7 +29,7 @@ function CartProductItem(props: CartProductItemProps) {
   const solvedIndex = index || 0;
 
   return (
-    <ListItem alignItems="flex-start">
+    <ListItem alignItems="flex-start" id="cart-list-item">
       <ListItemAvatar>
         <Avatar alt="photo of product cart" src={productItem.image} />
       </ListItemAvatar>

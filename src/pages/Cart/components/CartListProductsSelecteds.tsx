@@ -18,7 +18,7 @@ export default function CartListProductsSelecteds() {
 
   return (
     <section id="cart-list-products-container">
-      <h1>Produtos na sacola</h1>
+      <h1 className="title">Produtos na sacola</h1>
       {hasProductsOnTheCart ? (
         <>
           <List
