@@ -52,7 +52,10 @@ function ProductsItem(props: ProductItemProps) {
   }
 
   return (
-    <Card sx={{ maxWidth: 345 }} className="cart-product-item">
+    <Card
+      sx={{ maxWidth: 345 }}
+      className="cart-product-item"
+      data-testid="cart-product-item">
       <CardActionArea>
         <CardMedia
           component="img"
@@ -73,6 +76,7 @@ function ProductsItem(props: ProductItemProps) {
         <Button
           size="small"
           color="primary"
+          data-testid="add-product-on-cart"
           onClick={() => handleAddProductOnCart()}>
           Adicionar ao carrinho
         </Button>

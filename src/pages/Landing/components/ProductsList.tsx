@@ -32,7 +32,7 @@ function ProductsList() {
   if (loading) return <p>Carregando...</p>;
 
   return (
-    <section id="landing-page-products-container">
+    <section data-testid="products-container">
       <Grid container spacing={2}>
         {hasProducts ? (
           (products || []).map((product: ProductProps, index: number) => (
@@ -42,7 +42,11 @@ function ProductsList() {
           ))
         ) : (
           <Grid item xs={12}>
-            <Typography variant="h6" gutterBottom component="div">
+            <Typography
+              variant="h6"
+              gutterBottom
+              component="div"
+              className="no-has-products">
               Ainda não há produtos disponiveis
             </Typography>
           </Grid>
