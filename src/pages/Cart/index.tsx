@@ -5,7 +5,7 @@ import CartListProductsSelecteds from './components/CartListProductsSelecteds';
 
 function CartContainer() {
   return (
-    <section id="cart-container-page">
+    <section data-testid="cart-container-page">
       <Header />
       <Container>
         <CartListProductsSelecteds />

@@ -1,4 +1,3 @@
-// todo check page container title `Produtos disponíveis`
 import React from 'react';
 
 import { render } from '@testing-library/react';
