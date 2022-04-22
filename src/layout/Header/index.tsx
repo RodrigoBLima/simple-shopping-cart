@@ -34,10 +34,11 @@ function Header() {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" id="app-bar">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
+            className="app-bar-logo"
             variant="h6"
             noWrap
             component="div"
@@ -79,6 +80,7 @@ function Header() {
           </Box>
 
           <Typography
+            className="app-bar-logo"
             variant="h6"
             noWrap
             component="div"
