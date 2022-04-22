@@ -17,7 +17,7 @@ export default function CartListProductsSelecteds() {
   const totalPayment = handleCalculateTotalToPay();
 
   return (
-    <section id="cart-list-products-container">
+    <section data-testid="cart-list-products-container">
       <h1 className="title">Produtos na sacola</h1>
       {hasProductsOnTheCart ? (
         <>

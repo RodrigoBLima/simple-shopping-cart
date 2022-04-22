@@ -29,7 +29,7 @@ function CartProductItem(props: CartProductItemProps) {
   const solvedIndex = index || 0;
 
   return (
-    <ListItem alignItems="flex-start" id="cart-list-item">
+    <ListItem alignItems="flex-start" data-testid="cart-list-item">
       <ListItemAvatar>
         <Avatar alt="photo of product cart" src={productItem.image} />
       </ListItemAvatar>
@@ -54,7 +54,9 @@ function CartProductItem(props: CartProductItemProps) {
 
             <br />
 
-            <section className="cart-product-item-select-quantity">
+            <section
+              className="cart-product-item-select-quantity"
+              data-testid="cart-product-item-select-quantity">
               <IconButton
                 aria-label="plus"
                 onClick={() =>

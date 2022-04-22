@@ -1,9 +1,57 @@
-// todo check if id exists on component `cart-list-products-container`
+import React from 'react';
 
-// todo check title on component .title => `Produtos na sacola`
+import { render, screen } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
 
-// todo check if has data and total exists `Total de produtos:`
+import { CartProvider } from '../../../../contexts/cart/CartContextProvider';
+import CartListProductsSelecteds from '../../../../pages/Cart/components/CartListProductsSelecteds';
 
-// todo check if has data and total to pay exists `Total à pagar:`
+test('container id container list exists', async () => {
+  const { queryByTestId } = render(
+    <CartProvider>
+      <CartListProductsSelecteds />
+    </CartProvider>,
+    { wrapper: BrowserRouter }
+  );
+  const sectionContainer = queryByTestId('cart-list-products-container');
 
-// todo check if mock data is empy has message on screen `Seu carrinho está vazio, vamos as compras?`
+  expect(sectionContainer).toBeInTheDocument();
+});
+
+test('exists title on the container', async () => {
+  const { container } = render(
+    <CartProvider>
+      <CartListProductsSelecteds />
+    </CartProvider>,
+    { wrapper: BrowserRouter }
+  );
+  container.querySelector('.title');
+
+  expect(container).toBeInTheDocument();
+});
+
+test('title label is correctly', async () => {
+  render(
+    <CartProvider>
+      <CartListProductsSelecteds />
+    </CartProvider>,
+    { wrapper: BrowserRouter }
+  );
+
+  const textElement = screen.getByText(/Produtos na sacola/i);
+  expect(textElement).toBeInTheDocument();
+});
+
+test('label of empy cart is correctly', async () => {
+  render(
+    <CartProvider>
+      <CartListProductsSelecteds />
+    </CartProvider>,
+    { wrapper: BrowserRouter }
+  );
+
+  const textElement = screen.getByText(
+    /Seu carrinho está vazio, vamos as compras?/i
+  );
+  expect(textElement).toBeInTheDocument();
+});
