@@ -7,6 +7,7 @@ import { ProductProps } from '../../../types/products';
 import ProductsItem from './ProductsItem/index';
 
 import api from '../../../services/api';
+import Spinner from '../../../components/Spinner';
 
 function ProductsList() {
   const [products, setProducts] = React.useState([]);
@@ -29,10 +30,18 @@ function ProductsList() {
     handleFetchProducts();
   }, []);
 
-  if (loading) return <p>Carregando...</p>;
+  if (loading) return <Spinner />;
 
   return (
-    <section data-testid="products-container">
+    <section data-testid="products-container-list">
+      <Typography
+        variant="h4"
+        gutterBottom
+        component="div"
+        className="title-products">
+        Produtos disponíveis
+      </Typography>
+
       <Grid container spacing={2}>
         {hasProducts ? (
           (products || []).map((product: ProductProps, index: number) => (

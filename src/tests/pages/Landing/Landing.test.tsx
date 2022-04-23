@@ -6,13 +6,14 @@ import { BrowserRouter } from 'react-router-dom';
 import { CartProvider } from '../../../contexts/cart/CartContextProvider';
 import LandingContainer from '../../../pages/Landing';
 
-test('container landing has title', async () => {
-  const { getByText } = render(
+test('container id exists', async () => {
+  const { queryByTestId } = render(
     <CartProvider>
       <LandingContainer />
     </CartProvider>,
     { wrapper: BrowserRouter }
   );
+  const sectionContainer = queryByTestId('landing-container-page');
 
-  expect(getByText('Produtos disponíveis')).toBeInTheDocument();
+  expect(sectionContainer).toBeInTheDocument();
 });

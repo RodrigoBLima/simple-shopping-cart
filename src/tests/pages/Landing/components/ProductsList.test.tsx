@@ -29,3 +29,14 @@ test('label loading data from api', async () => {
   const textElement = screen.getByText(/Carregando.../i);
   expect(textElement).toBeInTheDocument();
 });
+
+test('container id list d exists', async () => {
+  const { container } = render(
+    <CartProvider>
+      <ProductsList />
+    </CartProvider>,
+    { wrapper: BrowserRouter }
+  );
+  container.querySelector('.title-products');
+  expect(container).toBeInTheDocument();
+});

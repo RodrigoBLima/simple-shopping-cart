@@ -3,7 +3,7 @@ import React from 'react';
 
 import { ErrorBoundary } from 'react-error-boundary';
 
-import { Container, Typography } from '@mui/material';
+import { Container } from '@mui/material';
 
 import Header from '../../layout/Header';
 import ProductsList from './components/ProductsList';
@@ -18,13 +18,12 @@ function LandingContainer() {
     <ErrorBoundary
       FallbackComponent={ProductFallBack}
       onReset={() => handleReloadPage()}>
-      <Header />
-      <Container>
-        <Typography variant="h4" gutterBottom component="div">
-          Produtos disponíveis
-        </Typography>
-        <ProductsList />
-      </Container>
+      <section data-testid="landing-container-page">
+        <Header />
+        <Container>
+          <ProductsList />
+        </Container>
+      </section>
     </ErrorBoundary>
   );
 }
